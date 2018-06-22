@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dojo Survey</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h3>Fill in the Form Bellow</h3>
+	<!-- Output error messages if there is any -->
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	<form action="/result" method="post">
+		<p>Your Name: <input type="text" name="name"></p>
+		<p>
+			Dojo Location:
+			<select name="location">
+				<option value="">Select Location</option>
+				<option value="San Jose">San Jose</option>
+				<option value="Dallas">Dallas</option>
+				<option value="Seattle">Seattle</option>
+			</select>
+		</p>
+		<p>
+			Favorite Language:
+			<select name="fav_lang">
+				<option value="">Select Language</option>
+				<option value="javascript">JavaScript</option>
+				<option value="python">Python</option>
+				<option value="Php">PHP</option>
+				<option value="Ruby">Ruby</option>
+			</select>
+		</p>
+		<p>
+			Cooment<span title="Optional">(?)</span><br>
+			<textarea name="comment" rows="5" cols="30"></textarea>
+		</p>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

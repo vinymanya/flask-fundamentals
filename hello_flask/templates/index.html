@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Flask</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+	<h3>Hello Flask!</h3>
+	<p>My name is {{ name }}</p>
+	<img src="{{url_for('static', filename='img/pics3.jpg')}}">
+</body>
+</html>

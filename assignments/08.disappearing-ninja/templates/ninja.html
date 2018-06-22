@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninjas Page</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	{% for ninja in all_ninjas %}
+		{% if ninja %}
+			<img src="{{ ninja }}" alt="{{ image_alt }}">
+		{% endif %}
+	{% endfor %}
+</body> 
+</html>

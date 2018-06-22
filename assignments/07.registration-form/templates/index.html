@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<!-- Output flash messages -->
+	{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			<ul>
+			{% for category, message in messages %}
+				<li class="{{ category }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+	<form action="/process" method="post">
+		<fieldset>
+			<legend>Registration Form</legend>
+			<p>
+				<label for="fn">First Name:</label>
+				<input type="text" name="firstName" id="fn" value="{{session['firstName']}}">
+			</p>
+			<p>
+				<label for="ln">Last Name:</label>
+				<input type="text" name="lastName" id="ln">
+			</p>
+			<p>
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email">
+			</p>
+			<p>
+				<label for="pw">Password:</label>
+				<input type="password" name="password" id="pw">
+			</p>
+			<p>
+				<label for="cpw">Confirm Password:</label>
+				<input type="password" name="confirm_password" id="cpw">
+			</p>
+			<p>
+				<label for="birthday">Date of Birth:</label>
+				<input type="date" name="birthday" id="birthday">
+			</p>
+			<input type="submit" value="Submit">
+		</fieldset>
+	</form>
+</body>
+</html>

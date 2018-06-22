@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Gold</title>
+</head>
+<body>
+	<h3>Your Gold: {{ session["gold"] }}</h3>
+	<h3>Farm</h3>
+	<form action="/process_money" method="post">
+		<label>(earn 10-20 golds)</label>
+		<input type="hidden" name="building" value="farm">
+		<input type="submit" value="Find Gold!">
+	</form>
+
+	<h3>Cave</h3>
+	<form action="/process_money" method="post">
+		<label>(earn 5-10 golds)</label>
+		<input type="hidden" name="building" value="cave">
+		<input type="submit" value="Find Gold!">
+	</form>
+
+	<h3>House</h3>
+	<form action="/process_money" method="post">
+		<label>(earn 2-5 golds)</label>
+		<input type="hidden" name="building" value="house">
+		<input type="submit" value="Find Gold!">
+	</form>
+
+	<h3>Casino</h3>
+	<form action="/process_money" method="post">
+		<label>(earn 0-50 golds)</label>
+		<input type="hidden" name="building" value="casino">
+		<input type="submit" value="Find Gold!">
+	</form>
+	<br><br>
+	<!-- Reset button -->
+	<a href="/reset"><button>Reset Everything</button></a>
+
+	<p>Activities:</p>
+	<div>
+		{% for activity in session["activities"] %}
+			<p>{{ activity }}</p>
+		{% endfor %}
+	</div>
+</body>
+</html>

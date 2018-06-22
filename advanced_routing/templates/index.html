@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<!-- Display error messages -->
+	{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<p id="{{ category }}">{{ message }}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
+	<form action="/user" method="post">
+		<fieldset>
+			<legend>Register to the List</legend>
+			<input type="hidden" name="count" value="1">
+			<label for="fn">
+				First Name: <input type="text" name="first_name" id="fn">
+			</label>
+			<br>
+			<label for="ln">
+				Last Name: <input type="text" name="last_name" id="ln">
+			</label>
+			<br>
+			<label for="email">
+				Email: <input type="email" name="email" id="email">
+			</label>
+			<br>
+			<input type="submit" value="Submit">
+		</fieldset>
+	</form>
+	<hr>
+	
+	<h3>List of Registered Users</h3>
+
+	<h4>Number of users so far is: {{ session["counter"] }}</h4>
+	<table>
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>User's id</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			{% for user in session["users"] %}
+				<tr>
+					{% if "user" %}
+						<td>{{ user["first_name"] }}</td>
+						<td>{{ user["last_name"] }}</td>
+						<td>{{ user["email"] }}</td>
+						<td>{{ user["id"] }} | <a href="/user/{{ user['id']}}">Show</a></td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+			
+		</tbody>
+	</table>
+	<br><br>
+	<a href="/clear"><button>Clear Session</button></a>
+</body>
+</html>

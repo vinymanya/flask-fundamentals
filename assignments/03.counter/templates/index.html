@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Counter Assignment</title>
+</head>
+<body>
+	<h1>Counter</h1>
+	<p> {{ session['counter'] }} times</p>
+
+	<!-- +2 button -->
+	<form action="/add">
+		<input type="submit" value="+2">
+	</form>
+	<br><br>
+	<!-- Reset form -->
+	<form action="/reset">
+		<input type="submit" value="Reset">
+	</form>
+</body>
+</html>

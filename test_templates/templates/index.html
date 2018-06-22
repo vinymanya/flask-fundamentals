@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index Page</title>
+</head>
+<body>
+	<h3>My first template with embedded python</h3>
+	<p>Phase: {{ phase }}</p>
+	<p>Times: {{ times }}</p>
+	<!-- Here is an example of embedding python for loop in our code -->
+	{% for x in range(0, times): %}
+		{% if x % 2 == 0: %}
+			<p>{{ phase }}</p>
+		{% endif %}
+	{% endfor %}
+</body>
+</html>
